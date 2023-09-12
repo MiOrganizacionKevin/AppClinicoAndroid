@@ -13,7 +13,7 @@
         android:theme="@style/Theme.AppClinicaAndroid"
         tools:targetApi="31">
         <activity
-            android:name=".views.LoginView"
+            android:name=".views.activities.LoginView"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

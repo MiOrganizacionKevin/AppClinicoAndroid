@@ -1,4 +1,4 @@
-package com.appclinicaandroid.views;
+package com.appclinicaandroid.views.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
