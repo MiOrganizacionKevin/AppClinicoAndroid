@@ -1,0 +1,34 @@
+[
+    {
+        "merged": "com.example.myapplication.app-mergeDebugResources-23:/layout/fragment_slideshow.xml",
+        "source": "com.example.myapplication.app-main-26:/layout/fragment_slideshow.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-mergeDebugResources-23:/layout/content_main.xml",
+        "source": "com.example.myapplication.app-main-26:/layout/content_main.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-mergeDebugResources-23:/layout/app_bar_main.xml",
+        "source": "com.example.myapplication.app-main-26:/layout/app_bar_main.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-mergeDebugResources-23:/layout/fragment_gallery.xml",
+        "source": "com.example.myapplication.app-main-26:/layout/fragment_gallery.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-mergeDebugResources-23:/layout/nav_header_main.xml",
+        "source": "com.example.myapplication.app-main-26:/layout/nav_header_main.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-mergeDebugResources-23:/layout/activity_main.xml",
+        "source": "com.example.myapplication.app-main-26:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-mergeDebugResources-23:/layout/activity_login.xml",
+        "source": "com.example.myapplication.app-main-26:/layout/activity_login.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-mergeDebugResources-23:/layout/fragment_home.xml",
+        "source": "com.example.myapplication.app-main-26:/layout/fragment_home.xml"
+    }
+]
