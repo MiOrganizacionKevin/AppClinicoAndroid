@@ -3,13 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/PC/Desktop/carpeta/AppClinicoAndroid/app/src/main/res/layout/activity_login.xml" value="0.3625" />
-        <entry key="..\:/Users/PC/Desktop/carpeta/AppClinicoAndroid/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/kevin/AndroidStudioProjects/MyApplication/app/src/main/res/layout/content_main.xml" value="0.19202898550724637" />
+        <entry key="..\:/Users/kevin/Desktop/DesarrolloBackendLogin/AppClinicoAndroid/app/src/main/res/layout/activity_login.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/kevin/Desktop/DesarrolloBackendLogin/AppClinicoAndroid/app/src/main/res/layout/activity_main.xml" value="0.24722222222222223" />
+        <entry key="..\:/Users/kevin/Desktop/DesarrolloBackendLogin/AppClinicoAndroid/app/src/main/res/layout/activity_vista_main.xml" value="0.33" />
+        <entry key="..\:/Users/kevin/Desktop/DesarrolloBackendLogin/AppClinicoAndroid/app/src/main/res/layout/app_bar_main.xml" value="0.24722222222222223" />
+        <entry key="..\:/Users/kevin/Desktop/DesarrolloBackendLogin/AppClinicoAndroid/app/src/main/res/layout/content_main.xml" value="0.24722222222222223" />
+        <entry key="..\:/Users/kevin/Desktop/DesarrolloBackendLogin/AppClinicoAndroid/app/src/main/res/layout/fragment_gallery.xml" value="0.24722222222222223" />
+        <entry key="..\:/Users/kevin/Desktop/DesarrolloBackendLogin/AppClinicoAndroid/app/src/main/res/layout/fragment_home.xml" value="0.24722222222222223" />
+        <entry key="..\:/Users/kevin/Desktop/DesarrolloBackendLogin/AppClinicoAndroid/app/src/main/res/layout/fragment_slideshow.xml" value="0.24722222222222223" />
+        <entry key="..\:/Users/kevin/Desktop/DesarrolloBackendLogin/AppClinicoAndroid/app/src/main/res/menu/activity_main_drawer.xml" value="0.26871794871794874" />
+        <entry key="..\:/Users/kevin/Desktop/DesarrolloBackendLogin/AppClinicoAndroid/app/src/main/res/menu/main.xml" value="0.24722222222222223" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="temurin-1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
