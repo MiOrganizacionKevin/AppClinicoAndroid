@@ -6,31 +6,83 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
-    tools:context=".view.RegistrarCita_Activity">
+    tools:context=".view.RegistrarCita_Activity"
+    android:background="@color/purple_700">
 
-    <!-- Título de la cita -->
     <TextView
+        android:id="@+id/imageLogoMedicine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Registrar Cita"
-        android:textSize="18sp"
-        android:layout_gravity="center"
-        android:layout_marginBottom="24dp" />
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="70dp"
+        android:layout_marginBottom="25dp"
+        android:text="VitaClinic"
+        android:fontFamily="@font/baloo_thambi"
+        android:textColor="@color/white"
+        android:textSize="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Selector de tipo de especialidad -->
-    <Spinner
-        android:id="@+id/especialidadSpinner"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Seleccionar Especialidad"
-        />
+        android:layout_height="match_parent"
+        android:background="@drawable/fondo_diseno_2"
+        android:gravity="center"
+        android:orientation="vertical">
 
-    <!-- Botón de búsqueda -->
-    <Button
-        android:id="@+id/buscarButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Buscar"
-        android:layout_marginTop="16dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="209dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="200dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="Registra tu cita"
+                android:textSize="14dp" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="5dp"
+                android:hint="@string/Select"
+                app:boxBackgroundMode="outline"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/especialidadTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:textSize="12dp"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <Button
+                android:id="@+id/buscarButton"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/diseno_boton"
+                android:text="Buscar"
+                android:textSize="13dp"
+                app:backgroundTint="@color/ColorButtonLogin" />
+        </LinearLayout>
+
+    </LinearLayout>
 </LinearLayout>
+

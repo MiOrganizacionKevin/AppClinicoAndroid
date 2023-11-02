@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.myapplication.R;
 
@@ -15,28 +18,41 @@ public class RegistrarCita_Activity extends AppCompatActivity {
     private Spinner especialidadSpinner;
     private Button buscarButton;
 
+    String[] items = {"Medicina", "Pediatría", "Neurología","Cardiología"};
+
+    AutoCompleteTextView autoCompleteTextView;
+
+    ArrayAdapter<String> adapterItems;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrar_cita);
 
-        // Inicializar el Spinner
-        especialidadSpinner = findViewById(R.id.especialidadSpinner);
+        autoCompleteTextView = findViewById(R.id.especialidadTextView);
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.opciones_especialidad, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        especialidadSpinner.setAdapter(adapter);
+        adapterItems = new ArrayAdapter<String>(this, R.layout.list_item,items);
 
-        // Inicializar el botón de búsqueda
+        autoCompleteTextView.setAdapter(adapterItems);
+
+        autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String item = parent.getItemAtPosition(position).toString();
+                Toast.makeText(getApplicationContext(), "Especialidad: "+item,Toast.LENGTH_LONG).show();
+            }
+        });
+
         buscarButton = findViewById(R.id.buscarButton);
 
-        // Configurar el evento de clic del botón
         buscarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Acciones a realizar cuando se hace clic en el botón de búsqueda
-                String especialidadSeleccionada = especialidadSpinner.getSelectedItem().toString();
+                //String especialidadSeleccionada = especialidadSpinner.getSelectedItem().toString();
             }
         });
+
+
     }
 }
