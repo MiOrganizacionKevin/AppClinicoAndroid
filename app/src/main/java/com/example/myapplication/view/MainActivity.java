@@ -6,10 +6,13 @@ import android.view.Menu;
 import android.widget.Toolbar;
 
 import com.example.myapplication.R;
+import com.example.myapplication.ui.PrincipalFragment;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -30,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        //selectFragment(new PrincipalFragment());
 
         setSupportActionBar(binding.appBarMain.toolbar);
 
@@ -47,6 +51,11 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
 
 
+    }
+
+    void selectFragment(Fragment f){
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.drawer_layout,f).commit();
     }
 
     @Override

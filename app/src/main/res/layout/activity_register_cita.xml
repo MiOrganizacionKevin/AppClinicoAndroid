@@ -6,9 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.RegistrarCitaFragment"
-    android:background="@color/purple_700"
-  >
+    tools:context=".view.Register_Cita_Activity"
+    android:background="@color/purple_700">
 
     <TextView
         android:id="@+id/imageLogoMedicine"
@@ -31,8 +30,7 @@
         android:layout_height="match_parent"
         android:background="@drawable/fondo_diseno_2"
         android:gravity="center"
-        android:orientation="vertical"
-        android:layout_marginTop="10dp">
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -41,7 +39,6 @@
             android:layout_marginEnd="30dp"
             android:layout_marginBottom="200dp"
             android:gravity="center"
-            android:layout_marginTop="30dp"
             android:orientation="vertical">
 
             <TextView
