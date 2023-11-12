@@ -15,7 +15,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_margin="30dp"
+            android:layout_marginHorizontal="30dp"
+            android:paddingHorizontal="15dp"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical">
@@ -30,7 +31,7 @@
                 android:layout_marginBottom="40dp"
                 android:text="VitaClinic"
                 android:textColor="@color/purple_700"
-                android:textSize="45dp"
+                android:textSize="38dp"
                 app:fontFamily="@font/baloo_thambi"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -105,5 +106,7 @@
                 android:textSize="13dp"
                 app:backgroundTint="@color/colorButtonNormal" />
         </LinearLayout>
+
+
     </ScrollView>
 </LinearLayout>

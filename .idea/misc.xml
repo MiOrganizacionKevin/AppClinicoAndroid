@@ -26,6 +26,15 @@
         <entry key="..\:/Users/PC/Desktop/AppClinicoAndroid/app/src/main/res/menu/main.xml" value="0.1685185185185185" />
         <entry key="..\:/Users/PC/Desktop/AppClinicoAndroid/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.13" />
         <entry key="..\:/Users/PC/Desktop/david/AppClinicoAndroid/app/src/main/res/layout/activity_logo.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/User/Desktop/AppClinicoAndroid/app/src/main/res/drawable/fondo_diseno_2.xml" value="0.2015" />
+        <entry key="..\:/Users/User/Desktop/AppClinicoAndroid/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/Users/User/Desktop/AppClinicoAndroid/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/User/Desktop/AppClinicoAndroid/app/src/main/res/layout/activity_register.xml" value="0.25" />
+        <entry key="..\:/Users/User/Desktop/AppClinicoAndroid/app/src/main/res/layout/activity_register_cita.xml" value="0.25" />
+        <entry key="..\:/Users/User/Desktop/AppClinicoAndroid/app/src/main/res/layout/app_bar_main.xml" value="0.25" />
+        <entry key="..\:/Users/User/Desktop/AppClinicoAndroid/app/src/main/res/layout/content_main.xml" value="0.25" />
+        <entry key="..\:/Users/User/Desktop/AppClinicoAndroid/app/src/main/res/layout/fragment_principal.xml" value="0.25" />
+        <entry key="..\:/Users/User/Desktop/AppClinicoAndroid/app/src/main/res/layout/fragment_registrar_cita.xml" value="0.25" />
       </map>
     </option>
   </component>

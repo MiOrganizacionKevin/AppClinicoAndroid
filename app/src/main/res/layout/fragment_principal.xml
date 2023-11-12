@@ -14,14 +14,13 @@
         android:id="@+id/imageLogoMedicine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="90dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="70dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="18dp"
         android:layout_marginBottom="25dp"
-        android:text="VitaClinic"
+        android:text="¡Bienvenido a tu dashboard!"
         android:textColor="@color/white"
-        android:textSize="40dp"
-        android:fontFamily="@font/baloo_thambi"
+        android:textSize="15dp"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -29,7 +28,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="1dp"
         android:background="@drawable/fondo_diseno_2"
         android:orientation="vertical">
 
