@@ -31,9 +31,9 @@ public class Register_Cita_Activity extends AppCompatActivity {
 
         autoCompleteTextView = findViewById(R.id.especialidadTextView);
 
-        adapterItems = new ArrayAdapter<String>(this, R.layout.list_item,items);
+        //adapterItems = new ArrayAdapter<String>(this, R.layout.list_item,items);
 
-        autoCompleteTextView.setAdapter(adapterItems);
+        //autoCompleteTextView.setAdapter(adapterItems);
 
         autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

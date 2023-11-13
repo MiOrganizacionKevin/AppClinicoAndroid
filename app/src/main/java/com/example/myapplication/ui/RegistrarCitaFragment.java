@@ -26,7 +26,7 @@ public class RegistrarCitaFragment extends Fragment {
 
     AutoCompleteTextView autoCompleteTextView;
 
-    ArrayAdapter<String> adapterItems;
+    //ArrayAdapter<String> adapterItems;
 
 
     public RegistrarCitaFragment() {
@@ -52,8 +52,8 @@ public class RegistrarCitaFragment extends Fragment {
 
         // Configura las vistas y eventos
         autoCompleteTextView = rootView.findViewById(R.id.especialidadTextView);
-        adapterItems = new ArrayAdapter<>(requireActivity(), R.layout.list_item, items);
-        autoCompleteTextView.setAdapter(adapterItems);
+        //adapterItems = new ArrayAdapter<>(requireActivity(), R.layout.list_item, items);
+        //autoCompleteTextView.setAdapter(adapterItems);
 
         autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
