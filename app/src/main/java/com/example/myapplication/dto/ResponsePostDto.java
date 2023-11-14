@@ -1,6 +1,6 @@
 package com.example.myapplication.dto;
 
-public class RegUsuResponseDto {
+public class ResponsePostDto {
     private String msg;
     private Boolean success = false;
 

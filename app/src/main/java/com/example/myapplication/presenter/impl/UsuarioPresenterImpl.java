@@ -1,6 +1,6 @@
 package com.example.myapplication.presenter.impl;
 
-import com.example.myapplication.dto.RegUsuResponseDto;
+import com.example.myapplication.dto.ResponsePostDto;
 import com.example.myapplication.dto.UsuarioDto;
 import com.example.myapplication.presenter.IUsuarioPresenter;
 import com.example.myapplication.repository.UsuarioRepository;
@@ -26,7 +26,7 @@ public class UsuarioPresenterImpl implements IUsuarioPresenter {
 
     @Override
     @Provides
-    public Observable<RegUsuResponseDto> registroUsuario(UsuarioDto usuarioDto) {
+    public Observable<ResponsePostDto> registroUsuario(UsuarioDto usuarioDto) {
         return usuRepo.registroUsuario(usuarioDto);
     }
 }

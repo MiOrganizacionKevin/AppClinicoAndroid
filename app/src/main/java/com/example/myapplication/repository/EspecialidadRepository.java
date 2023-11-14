@@ -1,9 +1,8 @@
 package com.example.myapplication.repository;
 
-import com.example.myapplication.apis.UsuarioApi;
+import com.example.myapplication.apis.EspecialidadApi;
 import com.example.myapplication.apis.VitaClinicApiClient;
-import com.example.myapplication.dto.ResponsePostDto;
-import com.example.myapplication.dto.UsuarioDto;
+import com.example.myapplication.dto.EspecialidadDto;
 
 import io.reactivex.Observable;
 import retrofit2.Call;
@@ -11,37 +10,35 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class UsuarioRepository {
-
+public class EspecialidadRepository {
     VitaClinicApiClient vitaClinic = new VitaClinicApiClient();
     Retrofit retrofit = vitaClinic.getClient();
 
-    public Observable<ResponsePostDto> registroUsuario(UsuarioDto usuarioDto){
-        UsuarioApi usuarioApi = retrofit.create(UsuarioApi.class);
+    public Observable<EspecialidadDto> especialidadesDoctores(){
+        EspecialidadApi especialidadApi = retrofit.create(EspecialidadApi.class);
 
         return Observable.create(emitter -> {
-            Call<ResponsePostDto> call = usuarioApi.registroUsuario(usuarioDto);
+            Call<EspecialidadDto> call = especialidadApi.especialidadesDoctor();
 
-            call.enqueue(new Callback<ResponsePostDto>() {
+            call.enqueue(new Callback<EspecialidadDto>() {
                 @Override
-                public void onResponse(Call<ResponsePostDto> call, Response<ResponsePostDto> response) {
+                public void onResponse(Call<EspecialidadDto> call, Response<EspecialidadDto> response) {
                     if(response.isSuccessful()){
-                        ResponsePostDto respuesta = response.body();
+                        EspecialidadDto respuesta = response.body();
 
                         emitter.onNext(respuesta);
                         emitter.onComplete();
                     }else{
-                        emitter.onNext(new ResponsePostDto());
+                        emitter.onNext(new EspecialidadDto());
                         emitter.onComplete();
                     }
                 }
 
                 @Override
-                public void onFailure(Call<ResponsePostDto> call, Throwable t) {
+                public void onFailure(Call<EspecialidadDto> call, Throwable t) {
                     emitter.onError(t);
                 }
             });
-
         });
     }
 }
