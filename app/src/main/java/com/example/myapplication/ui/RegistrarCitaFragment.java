@@ -16,17 +16,29 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.myapplication.R;
+import com.example.myapplication.dto.EspecialidadDto;
+import com.example.myapplication.model.Especialidad;
+import com.example.myapplication.presenter.impl.EspecialidadPresenterImpl;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.inject.Inject;
+
+import dagger.hilt.android.AndroidEntryPoint;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+
+@AndroidEntryPoint
 public class RegistrarCitaFragment extends Fragment {
 
     private Spinner especialidadSpinner;
     private Button buscarButton;
 
-    String[] items = {"Medicina", "Pediatría", "Neurología","Cardiología"};
-
     AutoCompleteTextView autoCompleteTextView;
+    ArrayAdapter<String> adapterItems;
 
-    //ArrayAdapter<String> adapterItems;
+    @Inject
+    EspecialidadPresenterImpl especPresenter;
 
 
     public RegistrarCitaFragment() {
@@ -40,20 +52,41 @@ public class RegistrarCitaFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_registrar_cita, container, false);
-
-        // Infla el diseño del fragmento
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_registrar_cita, container, false);
 
-        //return inflater.inflate(R.layout.fragment_register_citas, container, false);
+        especPresenter.especialidadesDoctor()
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        especialidad -> {
+                            List<String> listaItems = creacionDeListaItems(especialidad);
+                            listaEspecialidadView(rootView,listaItems);
+                        }
+                );
 
+        //Boton BUSCAR
+        botonBuscar(rootView);
+
+        return rootView;
+    }
+
+    public List<String> creacionDeListaItems(EspecialidadDto listaDto){
+
+        List<String> items = new ArrayList<>();
+
+        listaDto.getEspecialidadDoctor().forEach( nombre -> {
+            items.add(nombre.getNombre());
+        });
+
+        return items;
+    }
+
+
+    public void listaEspecialidadView(View view, List<String> items){
         // Configura las vistas y eventos
-        autoCompleteTextView = rootView.findViewById(R.id.especialidadTextView);
-        //adapterItems = new ArrayAdapter<>(requireActivity(), R.layout.list_item, items);
-        //autoCompleteTextView.setAdapter(adapterItems);
+        autoCompleteTextView = view.findViewById(R.id.especialidadTextView);
+        adapterItems = new ArrayAdapter<>(requireActivity(), R.layout.list_item, items);
+        autoCompleteTextView.setAdapter(adapterItems);
 
         autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -64,17 +97,16 @@ public class RegistrarCitaFragment extends Fragment {
                 toast.show();
             }
         });
+    }
 
-
-        buscarButton = rootView.findViewById(R.id.buscarButton);
+    public void botonBuscar(View view){
+        buscarButton = view.findViewById(R.id.buscarButton);
 
         buscarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Acciones a realizar cuando se hace clic en el botón de búsqueda
+                
             }
         });
-
-        return rootView;
     }
 }
