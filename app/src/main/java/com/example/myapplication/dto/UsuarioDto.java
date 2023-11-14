@@ -1,21 +1,19 @@
-package com.example.myapplication.model;
+package com.example.myapplication.dto;
 
-public class Usuario {
-    private String uid;
+public class UsuarioDto {
+
     private int dniUsuario;
     private String nombreUsuario;
     private String apellidoUsuario;
     private String correoUsuario;
     private String claveUsuario;
-    private String rol;
-    private Boolean estado;
 
-    public String getUid() {
-        return uid;
-    }
-
-    public void setUid(String uid) {
-        this.uid = uid;
+    public UsuarioDto(int dniUsuario, String nombreUsuario, String apellidoUsuario, String correoUsuario, String claveUsuario) {
+        this.dniUsuario = dniUsuario;
+        this.nombreUsuario = nombreUsuario;
+        this.apellidoUsuario = apellidoUsuario;
+        this.correoUsuario = correoUsuario;
+        this.claveUsuario = claveUsuario;
     }
 
     public int getDniUsuario() {
@@ -56,21 +54,5 @@ public class Usuario {
 
     public void setClaveUsuario(String claveUsuario) {
         this.claveUsuario = claveUsuario;
-    }
-
-    public String getRol() {
-        return rol;
-    }
-
-    public void setRol(String rol) {
-        this.rol = rol;
-    }
-
-    public Boolean getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Boolean estado) {
-        this.estado = estado;
     }
 }

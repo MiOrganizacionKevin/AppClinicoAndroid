@@ -6,7 +6,6 @@ import com.example.myapplication.apis.LoginApi;
 import com.example.myapplication.apis.VitaClinicApiClient;
 import com.example.myapplication.dto.auth.LoginRequestDto;
 import com.example.myapplication.dto.auth.LoginResponseDto;
-import com.example.myapplication.manejoErrores.ApiResponse;
 
 import io.reactivex.Observable;
 import retrofit2.Call;

@@ -11,21 +11,30 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.R;
 import com.example.myapplication.dto.auth.LoginRequestDto;
+import com.example.myapplication.presenter.IAuthPresenter;
+import com.example.myapplication.presenter.impl.AuthPresenterImpl;
 import com.example.myapplication.repository.LoginRepository;
 import com.google.gson.Gson;
 
+import javax.inject.Inject;
+
+import dagger.hilt.android.AndroidEntryPoint;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 
+@AndroidEntryPoint
 public class Login_Activity extends AppCompatActivity {
 
     private EditText editTextDNI, editTextPassword;
     private ProgressBar progressBar;
+    private TextView registroTextView;
 
-    LoginRepository loginRepo = new LoginRepository();
+    @Inject
+    AuthPresenterImpl authPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,30 +43,20 @@ public class Login_Activity extends AppCompatActivity {
 
         editTextDNI = findViewById(R.id.editTextDNI);
         editTextPassword = findViewById(R.id.editTextPassword);
+        registroTextView = findViewById(R.id.textRegistro);
 
         progressBar = findViewById(R.id.progressBar);
         progressBar.setVisibility(View.GONE);
 
         usuarioEstaLogueado();
-//
-//        Button buttonLogin = findViewById(R.id.buttonLogin);
-//        Button buttonCreateAccount = findViewById(R.id.buttonCreateAccount);
-//
-//        buttonLogin.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(Login_Activity.this, MainActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//
-//        buttonCreateAccount.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(Login_Activity.this, Register_Activity.class);
-//                startActivity(intent);
-//            }
-//        });
+
+        registroTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Login_Activity.this, Register_Activity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void usuarioEstaLogueado() {
@@ -65,9 +64,8 @@ public class Login_Activity extends AppCompatActivity {
         boolean isLogged = prefs.getBoolean("isLogged", false);
 
         if (isLogged) {
-            // El usuario ha iniciado sesión, abrir directamente la MainActivity
             startActivity(new Intent(this, MainActivity.class));
-            finish();  // Opcional: Finalizar esta actividad para que no aparezca en la pila
+            finish();
         }
     }
 
@@ -75,7 +73,7 @@ public class Login_Activity extends AppCompatActivity {
 
         progressBar.setVisibility(View.VISIBLE);
 
-        loginRepo.loginResponseDtoObservable(new LoginRequestDto(editTextDNI.getText().toString(),editTextPassword.getText().toString()))
+        authPresenter.loginUsuario(new LoginRequestDto(editTextDNI.getText().toString(),editTextPassword.getText().toString()))
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         login -> {
