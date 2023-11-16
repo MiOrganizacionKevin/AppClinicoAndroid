@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.myapplication.R;
 import com.example.myapplication.dto.auth.LoginRequestDto;
+import com.example.myapplication.model.Usuario;
 import com.example.myapplication.repository.LoginRepository;
 import com.google.gson.Gson;
 
@@ -71,6 +72,27 @@ public class Login_Activity extends AppCompatActivity {
         }
     }
 
+    public void startDefaultUser(View view) {
+        SharedPreferences sharPrefe = getSharedPreferences("MockApp", Context.MODE_PRIVATE);
+        SharedPreferences.Editor shareEdit = sharPrefe.edit();
+        Gson gson = new Gson();
+        var mockUsuario = new Usuario();
+        mockUsuario.setUid("mockUID");
+        mockUsuario.setDniUsuario(44556677);
+        mockUsuario.setNombreUsuario("Juan");
+        mockUsuario.setApellidoUsuario("García");
+        mockUsuario.setCorreoUsuario("juan-garcia@gmail.com");
+        mockUsuario.setRol("Doctor");
+        mockUsuario.setEstado(true);
+        shareEdit.putString("UsuarioObj", gson.toJson(mockUsuario));
+        shareEdit.putBoolean("isLogged",true);
+        shareEdit.apply();
+
+        Intent intent = new Intent(Login_Activity.this, MainActivity.class);
+
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
     public void iniciarSesionBtn(View view){
 
         progressBar.setVisibility(View.VISIBLE);

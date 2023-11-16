@@ -20,5 +20,23 @@
         android:id="@+id/registrarCitaFragment"
         android:name="com.example.myapplication.ui.RegistrarCitaFragment"
         android:label="@string/vitaclinic"
-        tools:layout="@layout/fragment_registrar_cita" />
+        tools:layout="@layout/fragment_registrar_cita">
+        <action
+            android:id="@+id/action_registrarCitaFragment_to_doctoresDisponiblesFragment"
+            app:destination="@id/doctoresDisponiblesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/doctoresDisponiblesFragment"
+        android:name="com.example.myapplication.ui.DoctoresDisponiblesFragment"
+        android:label="Doctores disponibles"
+        tools:layout="@layout/fragment_doctores_disponibles" >
+        <argument
+            android:name="specialityToSearch"
+            app:argType="string"
+            />
+        <argument
+            android:name="dateToSearch"
+            app:argType="string"
+            />
+    </fragment>
 </navigation>

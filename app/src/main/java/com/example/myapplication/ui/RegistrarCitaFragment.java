@@ -3,6 +3,8 @@ package com.example.myapplication.ui;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -21,6 +23,7 @@ public class RegistrarCitaFragment extends Fragment {
 
     private Spinner especialidadSpinner;
     private Button buscarButton;
+    NavController navController;
 
     String[] items = {"Medicina", "Pediatría", "Neurología","Cardiología"};
 
@@ -42,6 +45,7 @@ public class RegistrarCitaFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        navController = NavHostFragment.findNavController(this);
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_registrar_cita, container, false);
 
@@ -72,6 +76,7 @@ public class RegistrarCitaFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // Acciones a realizar cuando se hace clic en el botón de búsqueda
+                navController.navigate(RegistrarCitaFragmentDirections.actionRegistrarCitaFragmentToDoctoresDisponiblesFragment("Medicina General", "20 Octubre 2023"));
             }
         });
 
