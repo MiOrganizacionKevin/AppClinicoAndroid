@@ -9,12 +9,16 @@
         android:id="@+id/principalFragment"
         android:name="com.example.myapplication.ui.PrincipalFragment"
         android:label="@string/vitaclinic"
-        tools:layout="@layout/fragment_principal" />
+        tools:layout="@layout/fragment_principal" >
+        <action
+            android:id="@+id/action_principalFragment_to_misCitasFragment"
+            app:destination="@id/misCitasFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/misCitasFragment"
         android:name="com.example.myapplication.ui.MisCitasFragment"
-        android:label="@string/vitaclinic"
+        android:label="Mis citas"
         tools:layout="@layout/fragment_mis_citas" />
     <fragment
         android:id="@+id/registrarCitaFragment"

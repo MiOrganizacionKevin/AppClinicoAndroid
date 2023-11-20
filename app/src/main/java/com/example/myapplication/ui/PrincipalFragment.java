@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +17,7 @@ import com.example.myapplication.R;
 
 public class PrincipalFragment extends Fragment {
 
+    NavController navController;
     /*@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -23,6 +26,7 @@ public class PrincipalFragment extends Fragment {
     }*/
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        navController = NavHostFragment.findNavController(this);
         View rootView = inflater.inflate(R.layout.fragment_principal, container, false);
 
         ImageButton misCitasButton = rootView.findViewById(R.id.misCitasButton);
@@ -40,8 +44,7 @@ public class PrincipalFragment extends Fragment {
         misCitas2Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent intent = new Intent(getActivity(), Citas_Activity.class);
-                //startActivity(intent);
+                navController.navigate(R.id.action_principalFragment_to_misCitasFragment);
             }
         });
 

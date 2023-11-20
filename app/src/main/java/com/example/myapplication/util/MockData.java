@@ -1,5 +1,6 @@
 package com.example.myapplication.util;
 
+import com.example.myapplication.model.Cita;
 import com.example.myapplication.model.Doctor;
 import com.example.myapplication.model.DoctorSpeciality;
 import com.example.myapplication.model.FechaDiponibleEspecialidad;
@@ -7,6 +8,7 @@ import com.example.myapplication.model.FechaDiponibleEspecialidad;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
@@ -17,7 +19,6 @@ public class MockData {
         List<Doctor> listaDoctores = new ArrayList<>();
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
-
 
         try {
             String dateTimeDocto1 = "2023-10-11 13:00:00";
@@ -77,6 +78,46 @@ public class MockData {
             listaDoctores.add(mockDoctor1);
 
             return listaDoctores;
+
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public List<Cita> getCitas() {
+        List<Cita> listCitas = new ArrayList<>();
+
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+
+        try {
+            String dateTimeCita1 = "2023-08-11 13:00:00";
+            String dateTimeCita2 = "2023-10-11 15:00:00";
+            String dateTimeCita3 = "2023-12-11 16:00:00";
+
+            Cita mockCita1 = new Cita(
+                    "",
+                    getDoctoresDisponibles().get(1),
+                    (new DoctorSpeciality("", "Medicina General", "activado")),
+                    formatter.parse(dateTimeCita1)
+            );
+            Cita mockCita2 = new Cita(
+                    "",
+                    getDoctoresDisponibles().get(0),
+                    (new DoctorSpeciality("", "Pediatría", "activado")),
+                    formatter.parse(dateTimeCita2)
+            );
+            Cita mockCita3 = new Cita(
+                    "",
+                    getDoctoresDisponibles().get(2),
+                    (new DoctorSpeciality("", "Farmacología", "activado")),
+                    formatter.parse(dateTimeCita3)
+            );
+
+            listCitas.add(mockCita1);
+            listCitas.add(mockCita2);
+            listCitas.add(mockCita3);
+
+            return listCitas;
 
         } catch (ParseException e) {
             throw new RuntimeException(e);

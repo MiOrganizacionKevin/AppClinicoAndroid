@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:backgroundTint="@color/cardColorCita"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="4dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/labelDoctorName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Doctor"
+            android:textColor="#F3EEEE"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            />
+
+        <TextView
+            android:id="@+id/textDoctorName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/labelDoctorName"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="20dp"
+            android:layout_toStartOf="@+id/citaDoctorImage"
+            android:text="Doctor Encargado"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/labelDateCita"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fecha de Cita"
+            android:textColor="#F3EEEE"
+            android:layout_marginTop="8dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textDoctorName"
+            />
+
+        <TextView
+            android:id="@+id/textDateCita"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="23 Octureb, 2023"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:layout_marginStart="20dp"
+            android:layout_toStartOf="@+id/citaDoctorImage"
+            android:layout_below="@+id/labelDateCita"
+            android:layout_alignParentStart="true"
+            />
+
+
+        <TextView
+            android:id="@+id/labelTimeCita"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hora"
+            android:textColor="#F3EEEE"
+            android:layout_marginTop="8dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textDateCita"
+            />
+
+        <TextView
+            android:id="@+id/textTimeCita"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="13:00"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:layout_marginStart="20dp"
+            android:layout_toStartOf="@+id/citaDoctorImage"
+            android:layout_below="@+id/labelTimeCita"
+            android:layout_alignParentStart="true"
+            />
+
+        <TextView
+            android:id="@+id/labelSpecialityCita"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Doctor"
+            android:textColor="#F3EEEE"
+            android:layout_marginTop="8dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textTimeCita"
+            />
+
+        <TextView
+            android:id="@+id/textSpecialityCita"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Doctor Encargado"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:layout_marginStart="20dp"
+            android:layout_toStartOf="@+id/citaDoctorImage"
+            android:layout_below="@+id/labelSpecialityCita"
+            android:layout_alignParentStart="true"
+            />
+
+        <ImageView
+            android:id="@+id/citaDoctorImage"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:src="@drawable/user_icon"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/labelDoctorName"
+            android:layout_alignBottom="@+id/textSpecialityCita"
+            />
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
