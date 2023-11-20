@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center"
+    android:background="#9B8ABA"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/txtMes"
+        android:layout_width="wrap_content"
+        android:text="Julio"
+        android:textSize="55dp"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/txtDia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="90dp"
+        android:text="05"
+        android:textSize="70dp" />
+</LinearLayout>

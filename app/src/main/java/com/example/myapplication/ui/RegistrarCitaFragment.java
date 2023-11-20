@@ -1,8 +1,13 @@
 package com.example.myapplication.ui;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -12,16 +17,24 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.myapplication.R;
 import com.example.myapplication.dto.EspecialidadDto;
-import com.example.myapplication.model.Especialidad;
+import com.example.myapplication.dto.FechasDispoEspecDto;
 import com.example.myapplication.presenter.impl.EspecialidadPresenterImpl;
+import com.example.myapplication.presenter.impl.FechasDispoEspecImpl;
+import com.example.myapplication.ui.adapter.FechasDispoEspeAdapterHolder;
+import com.example.myapplication.util.FechaDispoEspec;
 
+import java.text.DateFormatSymbols;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 import javax.inject.Inject;
 
@@ -31,11 +44,21 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 @AndroidEntryPoint
 public class RegistrarCitaFragment extends Fragment {
 
+    NavController navController;
+
     private Spinner especialidadSpinner;
     private Button buscarButton;
+    private String especialidadSelect;
+    //private CalendarView calendarView;
+
+    ArrayList<FechaDispoEspec> lista;
+    RecyclerView recyclerView;
 
     AutoCompleteTextView autoCompleteTextView;
     ArrayAdapter<String> adapterItems;
+
+    @Inject
+    FechasDispoEspecImpl fechasDispoEspec;
 
     @Inject
     EspecialidadPresenterImpl especPresenter;
@@ -53,7 +76,16 @@ public class RegistrarCitaFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        navController = NavHostFragment.findNavController(this);
         View rootView = inflater.inflate(R.layout.fragment_registrar_cita, container, false);
+
+        buscarButton = rootView.findViewById(R.id.buscarButton);
+        //calendarView = rootView.findViewById(R.id.calendarView);
+        recyclerView = rootView.findViewById(R.id.recyclerId);
+
+        buscarButton.setEnabled(false);
+        buscarButton.setTextColor(Color.WHITE);
+        //calendarView.setVisibility(View.GONE);
 
         especPresenter.especialidadesDoctor()
                 .subscribeOn(AndroidSchedulers.mainThread())
@@ -93,6 +125,8 @@ public class RegistrarCitaFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String item = parent.getItemAtPosition(position).toString();
                 Toast toast = Toast.makeText(requireContext(), "Especialidad: " + item, Toast.LENGTH_LONG);
+                especialidadSelect=item;
+                buscarButton.setEnabled(true);
                 toast.setGravity(Gravity.TOP, 0, 1500); // Ajusta la posición aquí (en este ejemplo, 0 y 100)
                 toast.show();
             }
@@ -105,8 +139,65 @@ public class RegistrarCitaFragment extends Fragment {
         buscarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+                //calendarView.setVisibility(View.VISIBLE);
+                listaDeFechasDisponiblesEspec();
+                //crearRecyclerView();
+
+
             }
         });
+    }
+
+    public void listaDeFechasDisponiblesEspec(){
+
+        // Obtener una instancia de Calendar con la fecha actual
+        Calendar calendar = Calendar.getInstance();
+
+        // Obtener el mes actual (los meses en Calendar comienzan desde 0)
+        int mesActual = calendar.get(Calendar.MONTH) + 1;
+
+        fechasDispoEspec.fechasDisponiblesEspecialidad(Integer.toString(mesActual),"2023",especialidadSelect)
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        fechDisEsp -> {
+                            crearRecyclerView(fechDisEsp);
+                        }
+                );
+
+    }
+
+    public void crearRecyclerView(FechasDispoEspecDto listaFechasDispo){
+        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false));
+
+        lista = new ArrayList<>();
+
+        // Initializing the SDF
+        SimpleDateFormat SDFormat = new SimpleDateFormat();
+        // Getting al DateFormatSymbols
+        DateFormatSymbols DFSymbol = new DateFormatSymbols(new Locale("es", "ES"));
+        //DateFormatSymbols DFSymbol = SDFormat.getDateFormatSymbols();
+        // Getting the months
+        String[] month = DFSymbol.getShortMonths();
+
+
+
+        listaFechasDispo.getFechas().forEach( fechas -> {
+            lista.add(new FechaDispoEspec(month[Integer.parseInt(listaFechasDispo.getFechas().get(0).getMes())-1],fechas.getDia()));
+        });
+
+
+        FechasDispoEspeAdapterHolder adapter = new FechasDispoEspeAdapterHolder(lista);
+
+        adapter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(requireContext(),"Selecion: "+lista.get(recyclerView.getChildAdapterPosition(view)).getDia(),Toast.LENGTH_LONG);
+                System.out.println("Seleccion: "+ lista.get(recyclerView.getChildAdapterPosition(view)).getDia());
+                navController.navigate(RegistrarCitaFragmentDirections.actionRegistrarCitaFragmentToDoctoresDisponiblesFragment("Medicina General", "20 Octubre 2023"));
+
+            }
+        });
+
+        recyclerView.setAdapter(adapter);
     }
 }
