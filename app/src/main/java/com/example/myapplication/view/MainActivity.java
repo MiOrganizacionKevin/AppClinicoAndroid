@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.principalFragment, R.id.registrarCitaFragment, R.id.misCitasFragment)
+                R.id.principalFragment, R.id.registrarCitaFragment, R.id.misCitasFragment, R.id.doctoresDisponiblesFragment)
                 .setOpenableLayout(drawer)
                 .build();
 
