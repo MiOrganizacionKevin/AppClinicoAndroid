@@ -3,14 +3,12 @@ package com.example.myapplication.model;
 public class Doctor {
     private String uid;
     private String nombre;
-    private String foto;
     private Especialidad especialidad;
 
-    public Doctor(String uid, String nombre, Especialidad especialidad,String foto) {
+    public Doctor(String uid, String nombre, Especialidad especialidad) {
         this.uid = uid;
         this.nombre = nombre;
         this.especialidad = especialidad;
-        this.foto = foto;
     }
 
     public String getUid() {
@@ -37,11 +35,4 @@ public class Doctor {
         this.especialidad = especialidad;
     }
 
-    public String getFoto() {
-        return foto;
-    }
-
-    public void setFoto(String foto) {
-        this.foto = foto;
-    }
 }

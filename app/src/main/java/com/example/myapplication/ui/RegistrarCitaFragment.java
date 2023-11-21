@@ -24,6 +24,7 @@ import android.widget.Toast;
 import com.example.myapplication.R;
 import com.example.myapplication.dto.EspecialidadDto;
 import com.example.myapplication.dto.FechasDispoEspecDto;
+import com.example.myapplication.model.Especialidad;
 import com.example.myapplication.presenter.impl.EspecialidadPresenterImpl;
 import com.example.myapplication.presenter.impl.FechasDispoEspecImpl;
 import com.example.myapplication.ui.adapter.FechasDispoEspeAdapterHolder;
@@ -40,6 +41,7 @@ import javax.inject.Inject;
 
 import dagger.hilt.android.AndroidEntryPoint;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
 
 @AndroidEntryPoint
 public class RegistrarCitaFragment extends Fragment {
@@ -56,6 +58,7 @@ public class RegistrarCitaFragment extends Fragment {
 
     AutoCompleteTextView autoCompleteTextView;
     ArrayAdapter<String> adapterItems;
+    Disposable disposable;
 
     @Inject
     FechasDispoEspecImpl fechasDispoEspec;
@@ -156,7 +159,8 @@ public class RegistrarCitaFragment extends Fragment {
         // Obtener el mes actual (los meses en Calendar comienzan desde 0)
         int mesActual = calendar.get(Calendar.MONTH) + 1;
 
-        fechasDispoEspec.fechasDisponiblesEspecialidad(Integer.toString(mesActual),"2023",especialidadSelect)
+
+       disposable = fechasDispoEspec.fechasDisponiblesEspecialidad(Integer.toString(mesActual),"2023",especialidadSelect)
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         fechDisEsp -> {
@@ -164,6 +168,16 @@ public class RegistrarCitaFragment extends Fragment {
                         }
                 );
 
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        // Cancela la suscripción en onDestroy()
+        if (disposable != null && !disposable.isDisposed()) {
+            disposable.dispose();
+        }
     }
 
     public void crearRecyclerView(FechasDispoEspecDto listaFechasDispo){
@@ -182,7 +196,7 @@ public class RegistrarCitaFragment extends Fragment {
 
 
         listaFechasDispo.getFechas().forEach( fechas -> {
-            lista.add(new FechaDispoEspec(month[Integer.parseInt(listaFechasDispo.getFechas().get(0).getMes())-1],fechas.getDia()));
+            lista.add(new FechaDispoEspec(fechas.getUid(),month[Integer.parseInt(listaFechasDispo.getFechas().get(0).getMes())-1],fechas.getDia(),fechas.getEspecialidad()));
         });
 
 
@@ -193,7 +207,15 @@ public class RegistrarCitaFragment extends Fragment {
             public void onClick(View view) {
                 Toast.makeText(requireContext(),"Selecion: "+lista.get(recyclerView.getChildAdapterPosition(view)).getDia(),Toast.LENGTH_LONG);
                 System.out.println("Seleccion: "+ lista.get(recyclerView.getChildAdapterPosition(view)).getDia());
-                navController.navigate(RegistrarCitaFragmentDirections.actionRegistrarCitaFragmentToDoctoresDisponiblesFragment("Medicina General", "20 Octubre 2023"));
+                String uidFechaDispo = lista.get(recyclerView.getChildAdapterPosition(view)).getUid();
+                String dia = lista.get(recyclerView.getChildAdapterPosition(view)).getDia();
+                String mes = lista.get(recyclerView.getChildAdapterPosition(view)).getMes();
+                String espec = lista.get(recyclerView.getChildAdapterPosition(view)).getEspecialidad().getNombre();
+                System.out.println("Dia: "+dia);
+                System.out.println("Uid: "+uidFechaDispo);
+                System.out.println("Mes: "+mes);
+                System.out.println("Especialidad: "+espec);
+                navController.navigate(RegistrarCitaFragmentDirections.actionRegistrarCitaFragmentToDoctoresDisponiblesFragment(espec, dia+" "+mes+" 2023",uidFechaDispo));
 
             }
         });

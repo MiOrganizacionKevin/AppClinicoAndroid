@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
                         navController.navigate(R.id.registrarCitaFragment);
                         break;
                     case R.id.misCitasFragment:
+                        navController.navigate(R.id.misCitasFragment);
                         break;
                     case R.id.logoutFragment:
                         SharedPreferences sharedPreferences = getSharedPreferences("UsuarioLogueado", Context.MODE_PRIVATE);
