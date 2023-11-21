@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +17,7 @@ import com.example.myapplication.R;
 
 public class PrincipalFragment extends Fragment {
 
+    NavController navController;
     /*@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -27,23 +30,6 @@ public class PrincipalFragment extends Fragment {
 
         ImageButton misCitasButton = rootView.findViewById(R.id.misCitasButton);
         ImageButton registrarCitaButton = rootView.findViewById(R.id.registrarCitasButton);
-        ImageButton misCitas2Button = rootView.findViewById(R.id.misCitas2Button);
-
-        misCitasButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Intent intent = new Intent(getActivity(), Citas_Activity.class);
-                //startActivity(intent);
-            }
-        });
-
-        misCitas2Button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Intent intent = new Intent(getActivity(), Citas_Activity.class);
-                //startActivity(intent);
-            }
-        });
 
         registrarCitaButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,9 +40,21 @@ public class PrincipalFragment extends Fragment {
                 transaction.replace(R.id.nav_host_fragment_content_main, registerCitasFragment); // Reemplaza el contenido actual con el fragmento de registro de citas
                 transaction.addToBackStack(null); // Opcional: agrega la transacción a la pila de retroceso
                 transaction.commit();*/
+
+                navController = Navigation.findNavController(rootView);
+                navController.navigate(R.id.registrarCitaFragment);
             }
 
         });
+
+        misCitasButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController = Navigation.findNavController(rootView);
+                navController.navigate(R.id.misCitasFragment);
+            }
+        });
+
         //registrarCitaButton.setOnClickListener(v -> selectFragment(new RegistrarCitaFragment()));
 //nav_host_fragment_content_main
         return rootView;

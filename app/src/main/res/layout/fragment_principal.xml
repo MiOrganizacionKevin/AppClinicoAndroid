@@ -51,14 +51,14 @@
             android:orientation="horizontal">
 
             <ImageButton
-                android:id="@+id/misCitasButton"
+                android:id="@+id/misCitasButtonPrueba"
                 android:layout_width="wrap_content"
                 android:layout_height="110dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/button_2" />
 
             <ImageButton
-                android:id="@+id/misCitas2Button"
+                android:id="@+id/misCitasButton"
                 android:layout_width="wrap_content"
                 android:layout_height="110dp"
                 android:layout_weight="1"
