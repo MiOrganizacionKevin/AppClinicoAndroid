@@ -50,6 +50,13 @@ public class FechasDispoEspeAdapterHolder extends RecyclerView.Adapter<FechasDis
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fecha_dispo_espec,null,false);
 
+        // Aquí agregamos el ItemDecoration para el margen inferior
+//        int marginBottom = parent.getResources().getDimensionPixelSize(R.dimen.item_margin_bottom); // Ajusta esta dimensión según tus necesidades
+//        RecyclerView.LayoutParams layoutParams = (RecyclerView.LayoutParams) view.getLayoutParams();
+//        layoutParams.bottomMargin = marginBottom;
+//
+//        view.setLayoutParams(layoutParams);
+
         view.setOnClickListener(this);
 
         return new ViewFechasDispoEspeAdapterHolder(view);
