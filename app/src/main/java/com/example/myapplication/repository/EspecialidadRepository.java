@@ -1,8 +1,11 @@
 package com.example.myapplication.repository;
 
+import android.content.Context;
+
 import com.example.myapplication.apis.EspecialidadApi;
 import com.example.myapplication.apis.VitaClinicApiClient;
 import com.example.myapplication.dto.EspecialidadDto;
+import com.example.myapplication.util.TokenManager;
 
 import io.reactivex.Observable;
 import retrofit2.Call;
@@ -12,9 +15,11 @@ import retrofit2.Retrofit;
 
 public class EspecialidadRepository {
     VitaClinicApiClient vitaClinic = new VitaClinicApiClient();
-    Retrofit retrofit = vitaClinic.getClient();
+    Retrofit retrofit;
 
-    public Observable<EspecialidadDto> especialidadesDoctores(){
+    public Observable<EspecialidadDto> especialidadesDoctores(Context context){
+
+        retrofit = vitaClinic.getClient2(TokenManager.getToken(context));
         EspecialidadApi especialidadApi = retrofit.create(EspecialidadApi.class);
 
         return Observable.create(emitter -> {

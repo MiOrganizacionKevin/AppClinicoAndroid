@@ -1,5 +1,7 @@
 package com.example.myapplication.presenter.impl;
 
+import android.content.Context;
+
 import com.example.myapplication.dto.HorasDoctorDto;
 import com.example.myapplication.presenter.IHorasDoctorPresenter;
 import com.example.myapplication.repository.HorasDoctorRepository;
@@ -24,7 +26,7 @@ public class HorasDoctorPresenterImpl implements IHorasDoctorPresenter {
 
     @Override
     @Provides
-    public Observable<HorasDoctorDto> horasDoctor(String uidDoctorFechaDiEs) {
-        return repo.horasDoctor(uidDoctorFechaDiEs);
+    public Observable<HorasDoctorDto> horasDoctor(String uidDoctorFechaDiEs, Context context) {
+        return repo.horasDoctor(uidDoctorFechaDiEs,context);
     }
 }

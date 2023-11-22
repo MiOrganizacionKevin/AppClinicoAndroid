@@ -86,7 +86,7 @@ public class DoctoresDisponiblesFragment extends Fragment {
 
         doctoresDisponibles = new ArrayList<>();
         //Peticion de Fechas de doctores disponibles por especialidad
-        doctoresDispoEspecPresenter.doctoresDisponiblesEspecialidad(new DoctDispEspRequest(specility,uidFechaDispo))
+        doctoresDispoEspecPresenter.doctoresDisponiblesEspecialidad(new DoctDispEspRequest(specility,uidFechaDispo),getContext())
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         doctFechasDispoEsp -> {
@@ -99,7 +99,7 @@ public class DoctoresDisponiblesFragment extends Fragment {
                                     uidDocFechDiEs = docFecDis.getUid();
                                 });
 
-                                horasDoctorPresenter.horasDoctor(uidDocFechDiEs)
+                                horasDoctorPresenter.horasDoctor(uidDocFechDiEs,getContext())
                                         .subscribeOn(AndroidSchedulers.mainThread())
                                         .subscribe(
                                                 horDoc -> {

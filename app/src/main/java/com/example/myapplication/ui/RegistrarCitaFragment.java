@@ -90,7 +90,7 @@ public class RegistrarCitaFragment extends Fragment {
         buscarButton.setTextColor(Color.WHITE);
         //calendarView.setVisibility(View.GONE);
 
-        especPresenter.especialidadesDoctor()
+        especPresenter.especialidadesDoctor(requireContext())
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         especialidad -> {
@@ -160,7 +160,7 @@ public class RegistrarCitaFragment extends Fragment {
         int mesActual = calendar.get(Calendar.MONTH) + 1;
 
 
-       disposable = fechasDispoEspec.fechasDisponiblesEspecialidad(Integer.toString(mesActual),"2023",especialidadSelect)
+       disposable = fechasDispoEspec.fechasDisponiblesEspecialidad(Integer.toString(mesActual),"2023",especialidadSelect,getContext())
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         fechDisEsp -> {

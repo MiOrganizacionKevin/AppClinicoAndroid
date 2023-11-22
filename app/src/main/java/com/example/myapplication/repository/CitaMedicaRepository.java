@@ -1,11 +1,14 @@
 package com.example.myapplication.repository;
 
+import android.content.Context;
+
 import com.example.myapplication.apis.CitaMedicaApi;
 import com.example.myapplication.apis.VitaClinicApiClient;
 import com.example.myapplication.dto.HorasDoctorDto;
 import com.example.myapplication.dto.ResponsePostDto;
 import com.example.myapplication.dto.citaMedica.CitaMedicaRequestDto;
 import com.example.myapplication.dto.citaMedica.CitaMedicaResponseDto;
+import com.example.myapplication.util.TokenManager;
 
 import io.reactivex.Observable;
 import retrofit2.Call;
@@ -16,10 +19,10 @@ import retrofit2.Retrofit;
 public class CitaMedicaRepository {
 
     VitaClinicApiClient vitaClinic = new VitaClinicApiClient();
-    Retrofit retrofit = vitaClinic.getClient();
+    Retrofit retrofit;
 
-    public Observable<ResponsePostDto> crearCitaMedica(CitaMedicaRequestDto citaMedicaRequestDto){
-
+    public Observable<ResponsePostDto> crearCitaMedica(CitaMedicaRequestDto citaMedicaRequestDto, Context context){
+        retrofit = vitaClinic.getClient2(TokenManager.getToken(context));
         CitaMedicaApi citaMedicaApi = retrofit.create(CitaMedicaApi.class);
 
         return Observable.create(emitter -> {
@@ -48,8 +51,8 @@ public class CitaMedicaRepository {
         });
     }
 
-    public Observable<CitaMedicaResponseDto> obtenerCitasMedicas(String uidUsuario){
-
+    public Observable<CitaMedicaResponseDto> obtenerCitasMedicas(String uidUsuario, Context context){
+        retrofit = vitaClinic.getClient2(TokenManager.getToken(context));
         CitaMedicaApi citaMedicaApi = retrofit.create(CitaMedicaApi.class);
 
         return Observable.create(emitter -> {

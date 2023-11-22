@@ -1,5 +1,7 @@
 package com.example.myapplication.presenter.impl;
 
+import android.content.Context;
+
 import com.example.myapplication.dto.FechasDispoEspecDto;
 import com.example.myapplication.presenter.IFechasDispoEspec;
 import com.example.myapplication.repository.EspecialidadRepository;
@@ -25,7 +27,7 @@ public class FechasDispoEspecImpl implements IFechasDispoEspec {
 
     @Override
     @Provides
-    public Observable<FechasDispoEspecDto> fechasDisponiblesEspecialidad(String mes, String anio, String especialidad) {
-        return repo.fechasDispoEspecialidades(mes,anio,especialidad);
+    public Observable<FechasDispoEspecDto> fechasDisponiblesEspecialidad(String mes, String anio, String especialidad, Context context) {
+        return repo.fechasDispoEspecialidades(mes,anio,especialidad,context);
     }
 }

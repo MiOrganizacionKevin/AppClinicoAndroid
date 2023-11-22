@@ -56,7 +56,7 @@ public class MisCitasFragment extends Fragment {
         //-----------------
         citasUsuario = new ArrayList<>();
 
-        citaMedicaPresenter.obtenerCitasMedicas(tuObjeto.getUsuario().getUid())
+        citaMedicaPresenter.obtenerCitasMedicas(tuObjeto.getUsuario().getUid(),getContext())
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         misCitas -> {

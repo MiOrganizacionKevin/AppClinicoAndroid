@@ -1,5 +1,7 @@
 package com.example.myapplication.presenter.impl;
 
+import android.content.Context;
+
 import com.example.myapplication.dto.ResponsePostDto;
 import com.example.myapplication.dto.citaMedica.CitaMedicaRequestDto;
 import com.example.myapplication.dto.citaMedica.CitaMedicaResponseDto;
@@ -13,12 +15,12 @@ public class CitaMedicaPresenterImpl implements ICitaMedicaPresenter {
     CitaMedicaRepository repo = new CitaMedicaRepository();
 
     @Override
-    public Observable<ResponsePostDto> crearCitaMedica(CitaMedicaRequestDto citaMedicaRequestDto) {
-        return repo.crearCitaMedica(citaMedicaRequestDto);
+    public Observable<ResponsePostDto> crearCitaMedica(CitaMedicaRequestDto citaMedicaRequestDto, Context context) {
+        return repo.crearCitaMedica(citaMedicaRequestDto,context);
     }
 
     @Override
-    public Observable<CitaMedicaResponseDto> obtenerCitasMedicas(String uidUsuario) {
-        return repo.obtenerCitasMedicas(uidUsuario);
+    public Observable<CitaMedicaResponseDto> obtenerCitasMedicas(String uidUsuario, Context context) {
+        return repo.obtenerCitasMedicas(uidUsuario,context);
     }
 }

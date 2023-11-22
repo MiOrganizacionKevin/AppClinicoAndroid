@@ -75,7 +75,7 @@ public class ConfirmacionCitaFragment extends Fragment {
 
                 CitaMedicaRequestDto citaMedicaRequestDto = new CitaMedicaRequestDto(tuObjeto.getUsuario().getUid(),nombreDoctor,fechaCita,especialidad,horaCita);
 
-                citaMedicaPresenter.crearCitaMedica(citaMedicaRequestDto)
+                citaMedicaPresenter.crearCitaMedica(citaMedicaRequestDto,getContext())
                         .subscribeOn(AndroidSchedulers.mainThread())
                         .subscribe(
                                 citaMedica ->{

@@ -1,5 +1,7 @@
 package com.example.myapplication.presenter.impl;
 
+import android.content.Context;
+
 import com.example.myapplication.dto.EspecialidadDto;
 import com.example.myapplication.presenter.IEspecialidadPresente;
 import com.example.myapplication.repository.EspecialidadRepository;
@@ -24,7 +26,7 @@ public class EspecialidadPresenterImpl implements IEspecialidadPresente {
 
     @Override
     @Provides
-    public Observable<EspecialidadDto> especialidadesDoctor() {
-        return especRepo.especialidadesDoctores();
+    public Observable<EspecialidadDto> especialidadesDoctor(Context context) {
+        return especRepo.especialidadesDoctores(context);
     }
 }

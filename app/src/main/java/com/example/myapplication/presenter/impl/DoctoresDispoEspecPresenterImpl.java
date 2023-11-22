@@ -1,5 +1,7 @@
 package com.example.myapplication.presenter.impl;
 
+import android.content.Context;
+
 import com.example.myapplication.dto.doctoresDiEs.DoctDispEspRequest;
 import com.example.myapplication.dto.doctoresDiEs.DoctoresDispoEspecDto;
 import com.example.myapplication.presenter.IDoctoresDispoEspecPresenter;
@@ -25,7 +27,7 @@ public class DoctoresDispoEspecPresenterImpl implements IDoctoresDispoEspecPrese
 
     @Override
     @Provides
-    public Observable<DoctoresDispoEspecDto> doctoresDisponiblesEspecialidad(DoctDispEspRequest doctDispEspRequest) {
-        return repo.doctoresDisponiblesEspecialidad(doctDispEspRequest);
+    public Observable<DoctoresDispoEspecDto> doctoresDisponiblesEspecialidad(DoctDispEspRequest doctDispEspRequest, Context context) {
+        return repo.doctoresDisponiblesEspecialidad(doctDispEspRequest,context);
     }
 }
